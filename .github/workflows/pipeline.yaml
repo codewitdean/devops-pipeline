@@ -1,22 +1,24 @@
 name: CI Pipeline
-#this is a trigger event meaning what event should trigger the pipeline
+
+# this is a trigger event meaning what event should trigger the pipeline
 on:
   push:
-    branches:[main]
-#job here is a container where mutliple actions are triggered in sequence
+    branches: [main]
+
 jobs:
-# build is what os is should run on
+  # build is the job
   build:
     runs-on: ubuntu-latest
-  #inside a job you have to defined different steps
-    steps:  
+
+    # inside a job you define different steps
+    steps:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Set up Node.js  
-        uses: actions/setup-node@v3
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-            node-version:16
+          node-version: 16
 
       - name: Install dependencies
         run: npm install
